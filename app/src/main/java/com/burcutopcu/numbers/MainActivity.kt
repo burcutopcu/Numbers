@@ -1,15 +1,10 @@
 package com.burcutopcu.numbers
 
-import android.app.Activity
-import android.content.Context
 import android.graphics.Color
-import android.opengl.Visibility
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
-import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.burcutopcu.numbers.di.DaggerMainActivityComponent
@@ -53,8 +48,7 @@ class MainActivity : AppCompatActivity(){
 
             if(etNumber.text.toString() != "") {
                 numberDataLiveModel.setEnteredNumber(etNumber.text.toString().toInt())
-                numberDataLiveModel.getDialogView(this,loadingIndicator)
-                cvFacts.visibility=View.VISIBLE
+                numberDataLiveModel.getDialogView(this,loadingIndicator, cvFacts)
             } else
                 numberDataLiveModel.onSnack(rlContent)
         }
