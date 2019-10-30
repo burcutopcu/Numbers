@@ -21,7 +21,7 @@ import javax.inject.Inject
 import androidx.cardview.widget.CardView
 
 class MainActivityViewModel @Inject
-constructor(private val numbersRepo: NumbersRepo): ViewModel() {
+constructor(private val numbersRepo: NumbersRepo) : ViewModel() {
 
     private val numberText = MutableLiveData<String>()
     private var enteredNumber: Int = 0
@@ -30,8 +30,8 @@ constructor(private val numbersRepo: NumbersRepo): ViewModel() {
         return numberText
     }
 
-    fun setEnteredNumber(number: Int){
-        enteredNumber=number
+    fun setEnteredNumber(number: Int) {
+        enteredNumber = number
     }
 
     private fun putNumberInfo(number: Int, loadingIndicator: AVLoadingIndicatorView) {
@@ -41,12 +41,12 @@ constructor(private val numbersRepo: NumbersRepo): ViewModel() {
 
             override fun onServerCompleted(t: NumberInfoModel) {
                 loadingIndicator.hide()
-                numberText.value= t.text
+                numberText.value = t.text
             }
 
             override fun onServerError(error: String?) {
                 loadingIndicator.hide()
-                numberText.value="Can not found a fact"
+                numberText.value = "Can not found a fact"
             }
         })
     }
@@ -58,12 +58,12 @@ constructor(private val numbersRepo: NumbersRepo): ViewModel() {
 
             override fun onServerCompleted(t: DateInfoModel) {
                 loadingIndicator.hide()
-                numberText.value= t.text
+                numberText.value = t.text
             }
 
             override fun onServerError(error: String?) {
                 loadingIndicator.hide()
-                numberText.value="Can not found a fact"
+                numberText.value = "Can not found a fact"
             }
         })
     }
@@ -75,20 +75,22 @@ constructor(private val numbersRepo: NumbersRepo): ViewModel() {
 
             override fun onServerCompleted(t: YearInfoModel) {
                 loadingIndicator.hide()
-                numberText.value= t.text
+                numberText.value = t.text
             }
 
             override fun onServerError(error: String?) {
                 loadingIndicator.hide()
-                numberText.value="Can not found a fact"
+                numberText.value = "Can not found a fact"
             }
         })
     }
 
-    fun onSnack(view: View){
+    fun onSnack(view: View) {
 
-        val snackbar = Snackbar.make(view, "Please enter a valid number",
-            Snackbar.LENGTH_LONG).setAction("Action", null)
+        val snackbar = Snackbar.make(
+            view, "Please enter a valid number",
+            Snackbar.LENGTH_LONG
+        ).setAction("Action", null)
         snackbar.setActionTextColor(Color.BLUE)
         val snackbarView = snackbar.view
         snackbarView.setBackgroundColor(Color.parseColor("#000000"))
@@ -99,37 +101,37 @@ constructor(private val numbersRepo: NumbersRepo): ViewModel() {
         context: Context,
         loadingIndicator: AVLoadingIndicatorView,
         cvFacts: CardView
-    ){
+    ) {
 
         val mDialogView = LayoutInflater.from(context).inflate(com.burcutopcu.numbers.R.layout.dialog_buttons, null)
         //AlertDialogBuilder
         val mBuilder = AlertDialog.Builder(context)
             .setView(mDialogView)
         //show dialog
-        val  mAlertDialog = mBuilder.show()
+        val mAlertDialog = mBuilder.show()
 
         mDialogView.buttonGetDateInfo.setOnClickListener {
-            numberText.value=""
-            cvFacts.visibility=View.VISIBLE
+            numberText.value = ""
+            cvFacts.visibility = View.VISIBLE
             loadingIndicator.show()
             mAlertDialog.hide()
-            putDateInfo(enteredNumber,loadingIndicator)
+            putDateInfo(enteredNumber, loadingIndicator)
         }
 
         mDialogView.buttonGetNumberInfo.setOnClickListener {
-            numberText.value=""
-            cvFacts.visibility=View.VISIBLE
+            numberText.value = ""
+            cvFacts.visibility = View.VISIBLE
             loadingIndicator.show()
             mAlertDialog.hide()
-            putNumberInfo(enteredNumber,loadingIndicator)
+            putNumberInfo(enteredNumber, loadingIndicator)
         }
 
         mDialogView.buttonGetYearInfo.setOnClickListener {
-            numberText.value=""
-            cvFacts.visibility=View.VISIBLE
+            numberText.value = ""
+            cvFacts.visibility = View.VISIBLE
             loadingIndicator.show()
             mAlertDialog.hide()
-            putYearInfo(enteredNumber,loadingIndicator)
+            putYearInfo(enteredNumber, loadingIndicator)
         }
     }
 

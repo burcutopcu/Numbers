@@ -14,12 +14,18 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideApplication(app : App): Context = app
+    fun provideApplication(app: App): Context = app
 
     @Singleton
     @Provides
     fun provideGson(): Gson {
         return GsonBuilder().create()
+    }
+
+    @Singleton
+    @Provides
+    fun provideApp(): App {
+        return App()
     }
 
     @Singleton
@@ -30,7 +36,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideApiManager():ApiManager{
+    fun provideApiManager(): ApiManager {
         return ApiManager()
     }
 }

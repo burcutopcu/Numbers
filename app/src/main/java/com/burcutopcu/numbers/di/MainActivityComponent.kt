@@ -1,7 +1,6 @@
 package com.burcutopcu.numbers.di
 
-import com.burcutopcu.numbers.App
-import com.burcutopcu.numbers.MainActivity
+import com.burcutopcu.numbers.activities.MainActivity
 import com.burcutopcu.numbers.app.AppModule
 import dagger.BindsInstance
 import dagger.Component
@@ -13,13 +12,12 @@ import javax.inject.Singleton
 interface MainActivityComponent {
 
     @Component.Builder
-    interface Builder
-    {
+    interface Builder {
         @BindsInstance
         fun application(activity: MainActivity): Builder
 
         fun build(): MainActivityComponent
     }
 
-    fun inject (activity: MainActivity)
+    fun inject(activity: MainActivity)
 }

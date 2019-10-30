@@ -43,7 +43,7 @@ class ApiManager {
         override fun intercept(chain: Interceptor.Chain?): Response {
 
             val newRequestBuilder = chain?.request()?.newBuilder()
-            newRequestBuilder?.addHeader(GeneralConstants.CONTENT_TYPE,GeneralConstants.JSON)
+            newRequestBuilder?.addHeader(GeneralConstants.CONTENT_TYPE, GeneralConstants.JSON)
 
             val request = newRequestBuilder?.build()
             val response = chain?.proceed(request!!)

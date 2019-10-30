@@ -1,7 +1,7 @@
 package com.burcutopcu.numbers.di
 
 import androidx.lifecycle.ViewModelProviders
-import com.burcutopcu.numbers.MainActivity
+import com.burcutopcu.numbers.activities.MainActivity
 import com.burcutopcu.numbers.vm.MainActivityViewModel
 import com.burcutopcu.numbers.vm.MainActivityViewModelFactory
 import dagger.Module
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @Module
 abstract class ActivityBuilder {
 
-    @ContributesAndroidInjector(modules = arrayOf(MainActivityModule::class))
+    @ContributesAndroidInjector(modules = [MainActivityModule::class])
     abstract fun bindMainActivity(): MainActivity
 }
 
